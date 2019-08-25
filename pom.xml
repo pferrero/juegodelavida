@@ -10,6 +10,13 @@
 
     <name>Juego de la vida</name>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- class that has the main method -->
+        <mainClass>main.Main</mainClass>
+    </properties>
+
+
     <dependencies>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -34,6 +41,30 @@
                         <source>1.8</source>
                         <target>1.8</target>
                     </configuration>
+                </plugin>
+                <!-- Assembly plugin para crear jar ejecutable -->
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <!-- <version>3.1.1</version> -->
+                    <configuration>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
+                        <archive>
+                            <manifest>
+                                <mainClass>main.Main</mainClass>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>make-assembly</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
