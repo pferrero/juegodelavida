@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game implements Runnable{
+public class Game implements Runnable {
 
     private int          iteracion;
     private int          poblacion;
@@ -19,12 +19,12 @@ public class Game implements Runnable{
         this.iteracion = 0;
         this.poblacion = 0;
         this.matriz    = new boolean[30][30];
-        matriz[5][11] = true;
-        matriz[6][11] = true;
-        matriz[7][10] = true;
-        matriz[7][12] = true;
-        matriz[8][11] = true;
-        matriz[9][11] = true;
+        matriz[5][11]  = true;
+        matriz[6][11]  = true;
+        matriz[7][10]  = true;
+        matriz[7][12]  = true;
+        matriz[8][11]  = true;
+        matriz[9][11]  = true;
         matriz[10][11] = true;
         matriz[11][11] = true;
         matriz[12][10] = true;

@@ -17,8 +17,7 @@ public class Controller {
     public Controller(Game game, Tablero tablero) {
         this.game    = game;
         this.tablero = tablero;
-        this.hilo    = new Thread(game);
-
+        this.hilo    = null;
         this.game.addObserver(this.tablero);
 
         this.tablero.getBtnSalir().addActionListener( a -> this.tablero.cerrar() );
@@ -26,10 +25,13 @@ public class Controller {
     }
 
     private void iniciar() {
-        if( !hilo.isAlive() )
+        if ( hilo == null ) {
+            hilo = new Thread(game);
             hilo.start();
-        else
+        } else {
             hilo.interrupt();
+            hilo = null;
+        }
     }
 
     public void mostrarVista() {
