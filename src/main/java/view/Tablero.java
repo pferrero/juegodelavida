@@ -13,7 +13,6 @@ public class Tablero implements Notificable {
     private JFrame       frame;
     private JPanel       panel;
     private JMenuBar     barra;
-    private JMenu        menu;
     private JMenuItem    btnIniciar;
     private JMenuItem    btnSalir;
     private Celula[][]   celulas;
@@ -27,15 +26,13 @@ public class Tablero implements Notificable {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         celulas    = new Celula[30][30];
         barra      = new JMenuBar();
-        menu       = new JMenu("Opciones");
         btnIniciar = new JMenuItem("Iniciar");
         btnSalir   = new JMenuItem("Salir");
         panel      = new JPanel(null);
         log.info("Tamaño: " + celulas.length + "x" + celulas[0].length);
 
-        menu .add(btnIniciar);
-        menu .add(btnSalir);
-        barra.add(menu);
+        barra.add(btnIniciar);
+        barra.add(btnSalir);
 
         frame.setJMenuBar(barra);
 
@@ -59,10 +56,6 @@ public class Tablero implements Notificable {
 
     public JMenuBar getBarra() {
         return barra;
-    }
-
-    public JMenu getMenu() {
-        return menu;
     }
 
     public JMenuItem getBtnIniciar() { return btnIniciar; };

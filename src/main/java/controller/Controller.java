@@ -26,9 +26,11 @@ public class Controller {
 
     private void iniciar() {
         if ( hilo == null ) {
+            tablero.getBtnIniciar().setText("Pausar");
             hilo = new Thread(game);
             hilo.start();
         } else {
+            tablero.getBtnIniciar().setText("Continuar");
             hilo.interrupt();
             hilo = null;
         }
