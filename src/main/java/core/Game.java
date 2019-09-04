@@ -35,6 +35,7 @@ public class Game implements Runnable {
         matriz[24][20] = true;
         matriz[25][20] = true;
         matriz[26][20] = true;
+        this.poblacion = 15;
     }
 
     @Override
@@ -42,6 +43,7 @@ public class Game implements Runnable {
         log.info("Iniciando juego.");
         while ( !Thread.interrupted() ) {
             boolean[][] newMatriz = new boolean[30][30];
+            int newPoblacion = 0;
             for (int i = 0; i < matriz.length; i++) {
                 for (int j = 0; j < matriz[0].length; j++) {
                     newMatriz[i][j] = matriz[i][j];
@@ -53,10 +55,13 @@ public class Game implements Runnable {
                         if (cantVecinos == 3)
                             newMatriz[i][j] = true;
                     }
+                    if ( newMatriz[i][j] ) newPoblacion++;
                     //log.info("Cantidad de vecinos de (" + i + "," + j + ") = " + cantVecinos);
                 }
             }
-            this.matriz = newMatriz;
+            this.matriz    = newMatriz;
+            this.poblacion = newPoblacion;
+            iteracion++;
             actualizarObservers();
         }
 
@@ -89,5 +94,13 @@ public class Game implements Runnable {
 
     public boolean[][] getCelulas() {
         return matriz.clone();
+    }
+
+    public int getIteraion() {
+        return iteracion;
+    }
+
+    public int getPoblacion() {
+        return poblacion;
     }
 }
